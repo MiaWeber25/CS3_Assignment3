@@ -86,9 +86,35 @@ void computeLPSArray(char* pat, int M, int* lps)
 // Driver program to test above function
 int main()
 {
-    //CASE SENSITIVE!!!
-	char txt[] = "I Went To The Store Yesterday";
+	int fileName;
+	cout << "Enter file name: " << endl;
+	cin >> fileName;
+	
+	ifstream myFile;
+	myFile.open(fileName);
+	myFile.seekg(0,ios::end); //Go to the final char of the text file
+
+
+	unsigned int fileSize = myFile.tellg();
+	//size_t fileSize = myFile.tellg();
+
+	cout << "File Size: " << fileSize << endl;
+
+	char txt[fileSize]; //array length needed
+	ofstream myFile2;
+	myFile2 << txt;
+	//myFile >> txt;
+	//char txt[8];
+
+ ofstream myfile;
+  myfile.open (fileName);
+  myFile >> txt;
+  myfile.close();
+
+
+	//char txt[] = "I Went To The Store Yesterday.";
 	char pat[] = "To The Store";
 	KMPSearch(pat, txt);
+	cout << "AFTER SEARCH" << endl;
 	return 0;
 }
