@@ -4,8 +4,7 @@
 #include <stdlib.h>
 
 #include "KMP.cpp"
-#include <math.h>
-#include <istream>
+
 using namespace std;
 
 int main() {
