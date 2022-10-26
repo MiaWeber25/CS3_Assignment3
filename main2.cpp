@@ -47,21 +47,13 @@ int main() {
     cin.getline(pat, 100);
     cout << "pat[] = " << pat << endl;
     
-    //while (!cin.eof()) {
-       // cin >> noskipws >> pat[100*sizeof(char)];
-    //}
-    //cin.getline(pat, 10); //CREATES INFINATE LOOP IN SEARCH ALGORITHM FUNCITON 
-    //getline(cin, pat);
-    //cin.getline(pat, 100*sizeof(char));
-    //cout << "pat[] = " << pat << endl;
-    //char *txt = malloc(100*sizeof(char));
 
 
 
 
 
 
-/*
+
     //start the clock:
     //chrono::high_resolution_clock::time_point firstTime;
     auto start = chrono::high_resolution_clock::now();
@@ -73,7 +65,7 @@ int main() {
     myFile.close(); //close the file
 
   
-    cout << "\n txt[] = " << txt << endl;
+    //cout << "\n txt[] = " << txt << endl;
     //cout << "\n pat[] = " << pat << endl;
 	//char pat[] = "eBook";
     //char pat[] = "The Mall.";
@@ -81,7 +73,7 @@ int main() {
     cout << "CALLING SEARCH FUNCTION..." << endl;
     KMPSearch(pat, txt);
     cout << "AFTER SEARCH CALL" << endl;
-*/
+
     free(txt);
     return 0;
 }
