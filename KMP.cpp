@@ -84,37 +84,34 @@ void computeLPSArray(char* pat, int M, int* lps)
 }
 
 // Driver program to test above function
-int main()
+/*int main()
 {
-	int fileName;
+	//get the file name from the user
+	string fileName;
 	cout << "Enter file name: " << endl;
 	cin >> fileName;
-	
-	ifstream myFile;
+
+	fstream myFile;
 	myFile.open(fileName);
+	//myFile.open("text.txt"); //open the file
+	//------------------------------------------
 	myFile.seekg(0,ios::end); //Go to the final char of the text file
-
-
-	unsigned int fileSize = myFile.tellg();
-	//size_t fileSize = myFile.tellg();
-
-	cout << "File Size: " << fileSize << endl;
-
+	unsigned int fileSize = myFile.tellg(); //determine length of 
+	cout << "\n File Size: " << fileSize << endl;
 	char txt[fileSize]; //array length needed
-	ofstream myFile2;
-	myFile2 << txt;
-	//myFile >> txt;
-	//char txt[8];
 
- ofstream myfile;
-  myfile.open (fileName);
-  myFile >> txt;
-  myfile.close();
+	//------------------------------------------
+	myFile.seekg(0,ios::beg);
+	myFile.read(txt, fileSize); //SHERINE CODE
+	//auto stop = high_resolution_clock::binary();
 
+	myFile.close(); //close the file
 
 	//char txt[] = "I Went To The Store Yesterday.";
-	char pat[] = "To The Store";
+	cout << "\n TXT: " << txt << endl;
+	char pat[] = "To The";
+	cout << "\n PAT: " << pat << endl;
 	KMPSearch(pat, txt);
-	cout << "AFTER SEARCH" << endl;
+	cout << "\n AFTER SEARCH" << endl;
 	return 0;
-}
+}*/
