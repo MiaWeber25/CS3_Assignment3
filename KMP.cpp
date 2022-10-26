@@ -6,33 +6,35 @@
 
     using namespace std;
 
-void computeLPSArray(char* pat, int M, int* lps);
+void computeLPSArray(char* pat, int M, double* lps);
 
 // Prints occurrences of txt[] in pat[]
 void KMPSearch(char* pat, char* txt)
 {
 	int M = strlen(pat);
 	int N = strlen(txt);
-
+	cout << "GOT HERE 1" << endl;
 	// create lps[] that will hold the longest prefix suffix
 	// values for pattern
-	int lps[M];
+	double lps[M];
 
 	// Preprocess the pattern (calculate lps[] array)
 	computeLPSArray(pat, M, lps);
-
+	cout << "AFTER LPS ARRAY CALL" << endl;
 	int i = 0; // index for txt[]
 	int j = 0; // index for pat[]
 	while ((N - i) >= (M - j)) {
 		if (pat[j] == txt[i]) {
 			j++;
 			i++;
+			cout << "IN FIRST IF" << endl;
 		}
 
 		if (j == M) {
 			//printf("Found pattern at index %d ", i - j);
             cout << "Found pattern at index: " << i-j << endl;
 			j = lps[j - 1];
+			cout << "IN SECOND IF" << endl;
 		}
 
 		// mismatch after j matches
@@ -48,7 +50,7 @@ void KMPSearch(char* pat, char* txt)
 }
 
 // Fills lps[] for given pattern pat[0..M-1]
-void computeLPSArray(char* pat, int M, int* lps)
+void computeLPSArray(char* pat, int M, double* lps)
 {
 	// length of the previous longest prefix suffix
 	int len = 0;
@@ -115,3 +117,4 @@ void computeLPSArray(char* pat, int M, int* lps)
 	cout << "\n AFTER SEARCH" << endl;
 	return 0;
 }*/
+
