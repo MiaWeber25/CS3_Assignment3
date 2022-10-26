@@ -17,6 +17,9 @@ int HorspoolMatching(char [], char []);
 
 int main()
 {
+    char txt[]= "ABAAABCD";
+	char pat[] = "ABC";
+	cout << HorspoolMatching(pat, txt) << endl;
 
     return 0;
 }
@@ -30,7 +33,7 @@ int ShiftTable(char P[])
 
     while (index < m-1)
     {
-        table[P[index]] = m - 1- index;
+        table[P[index]] = m - 1 - index;
         index++;
     }
     return *table;
@@ -54,7 +57,7 @@ int HorspoolMatching(char P[], char T[])
         {
             k++;
         }
-        if (k = m)
+        if (k == m)
 			return (j - m + 1);
 		else
 			j = j + table[T[j]];
