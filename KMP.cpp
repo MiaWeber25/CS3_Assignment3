@@ -3,7 +3,7 @@
 //#include <bits/stdc++.h>
     #include <iostream>
     #include <fstream>
-	#include <math.h>
+	
 	
 
     using namespace std;
@@ -43,9 +43,10 @@ void KMPSearch(char* pat, char* txt)
 		else if (i < N && pat[j] != txt[i]) {
 			// Do not match lps[0..lps[j-1]] characters,
 			// they will match anyway
-			if (j != 0)
+			if (j != 0) {
 				j = lps[j - 1];
-			else
+				cout << "IN THIRD IF" << endl;
+			} else
 				i = i + 1;
 		}
 	}
