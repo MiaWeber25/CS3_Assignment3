@@ -1,5 +1,5 @@
 //
-//  Hoorspool.cpp
+//  Horspool.cpp
 //  Assignment 3
 //
 //  Created by Brandon Kamplain on 10/25/22.
