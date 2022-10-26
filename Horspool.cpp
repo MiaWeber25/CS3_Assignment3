@@ -27,7 +27,7 @@ int main()
 int ShiftTable(char P[])
 {
     int index = 0;
-    int m = sizeof(P);
+    int m = sizeof(P)/sizeof(P[0]);
 
     int table[m];
 
@@ -41,11 +41,11 @@ int ShiftTable(char P[])
 
 int HorspoolMatching(char P[], char T[])
 {
-    int m = sizeof(P);
-    int n = sizeof(T);
+    int m = sizeof(P)/sizeof(P[0]);
+    int n = sizeof(T)/sizeof(T[0]);
     int table[m];
     
-    for (int i = 0; i < sizeof(P); i++)
+    for (int i = 0; i < m; i++)
         table[i] = ShiftTable(&P[i]);
     
     int j = m-1;
