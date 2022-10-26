@@ -1,0 +1,37 @@
+Algorithm: ShiftTable
+Purpose: Calculate the shift table for Horspool's algirthm
+Input: Pattern P[0…m−1] and alphabet of possible characters
+Pre: Valid P, m>=2, and size of the alphabet >=m
+Return: A table of shift values for every possible characters in the alphabet
+BEGIN ShiftTable
+	Initialize all elements of Table with m
+	Set index to 0
+	WHILE (index < m-1) //{processing first m-1 characters in P from left to right}
+		Table[P[index]] = m - 1 - index
+		increase index by 1
+	ENDWHILE
+	RETURN Table
+END ShiftTable
+
+
+Algorithm: HorspoolMatching
+Purpose: Horspool's algorithm for string matching
+Input: Pattern P[0…m−1] and text T[0…n−1]
+Pre: n>=m, m>=2
+Return: index of 1st occurrence of P in T or -1 if P does not occur
+BEGIN HorspoolMatching
+	set Table to ShiftTable(P)
+	set j to m-1
+	WHILE (j <= n-1)
+		set k to 0
+		WHILE ((k <= m-1) AND P[m-1-k] = T[j-k])
+			increase k by 1
+		ENDWHILE
+		IF (k = m) THEN
+			RETURN (j - m + 1)
+		ELSE
+			set j to j+Table[T[j]]
+		ENDIF
+	ENDWHILE
+	RETURN -1
+END HorspoolMatch
