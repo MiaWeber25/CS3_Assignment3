@@ -13,7 +13,7 @@ void computeLPSArray(char* pat, int M, double* lps);
 void KMPSearch(char* pat, char* txt)
 {
 	int counter = 0;
-	int compare = 0;
+	int compare = 0; //comparison counter not working. One time 0 comparisons -> should never be 0 comparisons...
 	int M = strlen(pat);
 	int N = strlen(txt);
 	// create lps[] that will hold the longest prefix suffix
