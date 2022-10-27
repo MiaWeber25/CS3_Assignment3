@@ -7,11 +7,39 @@
 //https://stackoverflow.com/questions/30696639/increase-the-maximum-size-of-char-array 
 
 using namespace std;
+void search();
+void quit();
+void menu(int);
 
 int main() {
+    //S for search Q for quit -> switch statement:
+    char input = 'S';
+    while (input == 'S') {
+        cout << "Welcome! Please enter 'S' for search and 'Q' for quit: " << endl;
+        //cin.ignore();
+        cin >> input;
+        menu(input);
+    }  
+}
+
+void menu(int input) {
+    switch(input) {
+        case 'S': {//Search was selected
+            search();
+            break;
+        }
+        case 'Q': {//Quit was selected
+            quit();
+            break;
+        }
+    }
+}
+
+void search() {
     //Get file name from user:
     string fileName;
     cout << "Please specify input text file name: " << endl;
+    cin.ignore();
     getline(cin, fileName);
 
     //TESTING:
@@ -20,58 +48,45 @@ int main() {
     //Open the file:
     fstream myFile;
     myFile.open(fileName);
-    //cout << "OPENED THE FILE" << endl;
-    //Determine the size of the file
+
+    //Determine the size of the file:
     myFile.seekg(0, ios::end); //final char of .txt file
     unsigned int fileSize = myFile.tellg();
 
+    //TESTING:
     cout << "\n The size of the file is: " << fileSize << endl;
-    //cout << "ABOUT TO CREATE THE TEXT ARRAY" << endl;
-    //char txt[fileSize]; //WORKS BUT SEG FAULTS HERE
+
+    //Create the char array to store the text from the file:
     char * txt;
     txt = (char*) malloc (100*sizeof(char));
     if (txt==NULL) exit (1);
 
-    //char * pat;
-    //pat = (char*) malloc (100*sizeof(char));
-    //if (pat==NULL) exit (1);
-    //cin >> input;
-    /*char * pat;
-    pat = (char*) malloc (100*sizeof(char));
-    if (pat==NULL) exit (1);*/
-    char pat[100];
-
-    //string patInput;
+    //Get the pattern from the user:
+    char pat[100]; //NEED TO CHANGE 100
     cout << "enter pattern: " << endl;
-    //cin.ignore();
-    cin.getline(pat, 100);
+    cin.getline(pat, 100); //NEED TO CHANGE 100
     cout << "pat[] = " << pat << endl;
     
 
-
-
-
-
-
-
     //start the clock:
-    //chrono::high_resolution_clock::time_point firstTime;
     auto start = chrono::high_resolution_clock::now();
     myFile.seekg(0,ios::beg);
-	myFile.read(txt, fileSize); //SHERINE CODE
+	myFile.read(txt, fileSize); //Read the file
+    //stop the clock:
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
     cout << "Text read! Time to read: " << duration.count() << " nanoseconds" << endl;
     myFile.close(); //close the file
 
-  
-    //cout << "\n txt[] = " << txt << endl;
-    //cout << "\n pat[] = " << pat << endl;
-	//char pat[] = "eBook";
-    //char pat[] = "The Mall.";
-    //CALL SEARCHING FUNCTIONS:
-    KMPSearch(pat, txt);
+    //Call search functions:
+    KMPSearch(pat, txt); //KMP
+    //Horspool
+    //Karp Rabin
 
-    free(txt);
-    return 0;
+    free(txt); //Free memory used for char array for the text
+}
+
+void quit() {
+    cout << "Goodbye!" << endl;
+    return;
 }

@@ -13,6 +13,7 @@ void computeLPSArray(char* pat, int M, double* lps);
 void KMPSearch(char* pat, char* txt)
 {
 	int counter = 0;
+	int compare = 0;
 	int M = strlen(pat);
 	int N = strlen(txt);
 	// create lps[] that will hold the longest prefix suffix
@@ -27,6 +28,8 @@ void KMPSearch(char* pat, char* txt)
 		if (pat[j] == txt[i]) {
 			j++;
 			i++;
+			//increment comparisons counter??
+			compare++;
 		}
 
 		if (j == M) {
@@ -34,9 +37,11 @@ void KMPSearch(char* pat, char* txt)
             //cout << "Found pattern at index: " << i-j << endl;
 			counter++;
 			j = lps[j - 1];
+			//increment comparisons counter??
+			compare++;
 		}
 
-		// mismatch after j matches
+		// mismatch after j matches --> NO MORE COMPARISONS ARE MADE???? 
 		else if (i < N && pat[j] != txt[i]) {
 			// Do not match lps[0..lps[j-1]] characters,
 			// they will match anyway
@@ -45,8 +50,10 @@ void KMPSearch(char* pat, char* txt)
 			} else
 				i = i + 1;
 		}
+		//comparison counter finished here??
 	}
 	cout << "Number of Occurances in the text: " << counter << endl;
+	cout << "Number of comparisons made: " << compare << endl;
 }
 
 // Fills lps[] for given pattern pat[0..M-1]
