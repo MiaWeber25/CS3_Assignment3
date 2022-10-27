@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "KMP.cpp"
+#include "Horspool.cpp"
 //https://stackoverflow.com/questions/30696639/increase-the-maximum-size-of-char-array 
 
 using namespace std;
@@ -70,9 +71,13 @@ int main() {
 	//char pat[] = "eBook";
     //char pat[] = "The Mall.";
     //CALL SEARCHING FUNCTIONS:
-    cout << "CALLING SEARCH FUNCTION..." << endl;
+    cout << "CALLING KMP SEARCH FUNCTION..." << endl;
     KMPSearch(pat, txt);
-    cout << "AFTER SEARCH CALL" << endl;
+    cout << "AFTER KMP SEARCH CALL" << endl;
+    
+    cout << "CALLING HORSPOOL SEARCH FUNCTION..." << endl;
+    HorspoolMatching(pat, txt);
+    cout << "AFTER HORSPOOL SEARCH CALL" << endl;
 
     free(txt);
     return 0;
