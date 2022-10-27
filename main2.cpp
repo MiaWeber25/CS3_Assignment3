@@ -82,7 +82,8 @@ void search() {
     //Call search functions:
     cout << "KMP:\n";
     start = chrono::high_resolution_clock::now();
-    KMPSearch(pat, txt); //KMP
+    //KMPSearch(pat, txt); //KMP
+    KMP(pat, txt);
     stop = chrono::high_resolution_clock::now();
     duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
     cout << "Time: " << duration.count() << " nanoseconds\n";
