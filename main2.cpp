@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "KMP.cpp"
+#include "Horspool.cpp"
 //https://stackoverflow.com/questions/30696639/increase-the-maximum-size-of-char-array 
 
 using namespace std;
