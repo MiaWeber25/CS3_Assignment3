@@ -10,7 +10,7 @@ using namespace std;
 
 #define numOfChars 256
 
-void ShiftTable(char*, int, int[]);
+void ShiftTable(char*, double, int[]);
 void HorspoolMatching(char*, char*);
 
 /*
@@ -24,7 +24,7 @@ int main()
 }
 */
 
-void ShiftTable(char *P, int size, int table[numOfChars])
+void ShiftTable(char *P, double size, int table[numOfChars])
 {
     int index = 0;
 
@@ -41,6 +41,8 @@ void HorspoolMatching(char *P, char *T)
     int m = strlen(P);
     int n = strlen(T);
     int table[numOfChars];
+    int cnt = 0;
+    int cmp = 0;
 
     ShiftTable(P, m, table);
 
@@ -48,6 +50,7 @@ void HorspoolMatching(char *P, char *T)
     
     while(shift <= (n-m))
     {
+        cmp++;
         int j = m-1;
 
         while(j >= 0 && P[j] == T[shift+j])
@@ -55,11 +58,14 @@ void HorspoolMatching(char *P, char *T)
         
         if(j < 0)
         {
-            cout << "pattern occurs at shift " << shift << endl;
+            //cout << "pattern occurs at shift " << shift << endl;
+            cnt++;
 
             shift += (shift+m < n)? m-table[T[shift+m]] : 1;
         }
         else
             shift += max(1, j - table[T[shift+j]]);
     }
+
+    cout << "Number of Occurances in the text: " << cnt << endl << "Number of comparisons made: " << cmp << endl;
 }
