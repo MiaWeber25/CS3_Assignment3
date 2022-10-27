@@ -1,33 +1,34 @@
-/* Following program is a C++ implementation of Rabin Karp
-Algorithm given in the CLRS book */
+/*
+    Karp-Rabin Search Algorithm
+    CSCI 250 Mia Weber & Brandon Kamplain
+    10/30/2022
+*/
 #include <iostream>
+
 using namespace std;
 
-// d is the number of characters in the input alphabet
-#define d 256
+const int D = 256; // number of chars in alphabet (ASCII = 256)
 
-/* pat -> pattern
-    txt -> text
-    q -> A prime number
-*/
-void search(char pat[], char txt[], int q)
-{
+
+//void search(char pat[], char txt[], int q) //q is a prime number
+void KRMatching(char pat[], char txt[], int q) {
     int M = strlen(pat);
     int N = strlen(txt);
     int i, j;
     int p = 0; // hash value for pattern
     int t = 0; // hash value for txt
     int h = 1;
+    int counter = 0;
 
     // The value of h would be "pow(d, M-1)%q"
     for (i = 0; i < M - 1; i++)
-        h = (h * d) % q;
+        h = (h * D) % q;
 
     // Calculate the hash value of pattern and first
     // window of text
     for (i = 0; i < M; i++) {
-        p = (d * p + pat[i]) % q;
-        t = (d * t + txt[i]) % q;
+        p = (D * p + pat[i]) % q;
+        t = (D * t + txt[i]) % q;
     }
 
     // Slide the pattern over text one by one
@@ -48,14 +49,13 @@ void search(char pat[], char txt[], int q)
             // ...i+M-1]
 
             if (j == M)
-                cout << "Pattern found at index " << i
-                    << endl;
+                counter++; //increment counter (found pattern!)
         }
 
         // Calculate hash value for next window of text:
         // Remove leading digit, add trailing digit
         if (i < N - M) {
-            t = (d * (t - txt[i] * h) + txt[i + M]) % q;
+            t = (D * (t - txt[i] * h) + txt[i + M]) % q;
 
             // We might get negative value of t, converting
             // it to positive
@@ -63,9 +63,10 @@ void search(char pat[], char txt[], int q)
                 t = (t + q);
         }
     }
+    cout << "Number of Occurances: " << counter << endl;
 }
 
-/* Driver code */
+/* Driver code 
 int main()
 {
     char txt[] = "GEEKS FOR GEEKS";
@@ -81,3 +82,4 @@ int main()
 }
 
 // This is code is contributed by rathbhupendra
+*/
