@@ -76,12 +76,24 @@ void search() {
     //stop the clock:
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
-    cout << "Text read! Time to read: " << duration.count() << " nanoseconds" << endl;
+    cout << "Text read! Time to read: " << duration.count() << " nanoseconds\n" << endl;
     myFile.close(); //close the file
 
     //Call search functions:
+    cout << "KMP:\n";
+    start = chrono::high_resolution_clock::now();
     KMPSearch(pat, txt); //KMP
-    //Horspool
+    stop = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
+    cout << "Time: " << duration.count() << " nanoseconds\n";
+
+    cout << "\nHorspool:\n";
+    start = chrono::high_resolution_clock::now();
+    HorspoolMatching(pat, txt); //Horspool
+    stop = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
+    cout << "Time: " << duration.count() << " nanoseconds\n";
+    
     //Karp Rabin
 
     free(txt); //Free memory used for char array for the text
