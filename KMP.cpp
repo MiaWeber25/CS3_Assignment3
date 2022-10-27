@@ -8,9 +8,11 @@
 
 void computeLPSArray(char* pat, int M, double* lps);
 
+
 // Prints occurrences of txt[] in pat[]
 void KMPSearch(char* pat, char* txt)
 {
+	int counter = 0;
 	int M = strlen(pat);
 	int N = strlen(txt);
 	// create lps[] that will hold the longest prefix suffix
@@ -29,7 +31,8 @@ void KMPSearch(char* pat, char* txt)
 
 		if (j == M) {
 			//printf("Found pattern at index %d ", i - j);
-            cout << "Found pattern at index: " << i-j << endl;
+            //cout << "Found pattern at index: " << i-j << endl;
+			counter++;
 			j = lps[j - 1];
 		}
 
@@ -43,6 +46,7 @@ void KMPSearch(char* pat, char* txt)
 				i = i + 1;
 		}
 	}
+	cout << "Number of Occurances in the text: " << counter << endl;
 }
 
 // Fills lps[] for given pattern pat[0..M-1]

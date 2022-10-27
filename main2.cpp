@@ -20,13 +20,13 @@ int main() {
     //Open the file:
     fstream myFile;
     myFile.open(fileName);
-    cout << "OPENED THE FILE" << endl;
+    //cout << "OPENED THE FILE" << endl;
     //Determine the size of the file
     myFile.seekg(0, ios::end); //final char of .txt file
     unsigned int fileSize = myFile.tellg();
 
     cout << "\n The size of the file is: " << fileSize << endl;
-    cout << "ABOUT TO CREATE THE TEXT ARRAY" << endl;
+    //cout << "ABOUT TO CREATE THE TEXT ARRAY" << endl;
     //char txt[fileSize]; //WORKS BUT SEG FAULTS HERE
     char * txt;
     txt = (char*) malloc (100*sizeof(char));
@@ -70,9 +70,7 @@ int main() {
 	//char pat[] = "eBook";
     //char pat[] = "The Mall.";
     //CALL SEARCHING FUNCTIONS:
-    cout << "CALLING SEARCH FUNCTION..." << endl;
     KMPSearch(pat, txt);
-    cout << "AFTER SEARCH CALL" << endl;
 
     free(txt);
     return 0;
