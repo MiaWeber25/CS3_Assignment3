@@ -5,7 +5,7 @@
 using namespace std;
 
 // Number of vertices in the graph
-#define V 8
+#define V 10
 
 // A utility function to find the vertex with
 // minimum key value, from the set of vertices
@@ -97,14 +97,16 @@ int main()
 			9	 */
 
 
-	int graph[V][V] = { { 0, 1, 0, 0, 4, 0, 0, 0 }, //Using adjancency matrix???
-						{ 1, 0, 2, 0, 0, 0, 0, 0 },
-						{ 0, 2, 0, 0, 0, 0, 2, 0 },
-						{ 0, 0, 0, 0, 0, 0, 1, 0 },
-						{ 4, 0, 0, 0, 0, 0, 0, 0 },
-                        { 0, 0, 0, 0, 0, 0, 1, 0 },
-                        { 0, 0, 2, 1, 0, 1, 0, 1 },
-                        { 0, 0, 0, 0, 0, 0, 1, 0 } };
+	int graph[V][V] = { { 0, 6, 10, 0, 0, 0, 0, 0, 0, 0 }, //Using adjancency matrix
+						{ 6, 0, 12, 11, 14, 0, 0, 0, 0, 0 },
+						{ 10, 12, 0, 12, 0, 0, 8, 16, 0, 0 },
+						{ 11, 11, 12, 0, 0, 6, 3, 0, 0, 0 },
+						{ 14, 14, 0, 0, 0, 4, 0, 0, 6, 0 },
+                        { 0, 0, 0, 6, 4, 0, 0, 0, 12, 0 },
+                        { 0, 0, 8, 3, 0, 0, 0, 0, 16, 6 },
+                        { 0, 0, 16, 0, 0, 0, 0, 0, 0, 8 },
+                        { 0, 0, 0, 0, 6, 12, 16, 0, 0, 13 },
+                        { 0, 0, 0, 0, 0, 0, 6, 8, 13, 0 } };
 
 	// Print the solution
 	primMST(graph);
