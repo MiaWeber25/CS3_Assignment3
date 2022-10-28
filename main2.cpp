@@ -94,7 +94,12 @@ void search() {
     duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
     cout << "Time: " << duration.count() << " nanoseconds\n";
     
+    cout << "\nKarp-Rabin:\n";
+    start = chrono::high_resolution_clock::now();
     //Karp Rabin
+    stop = chrono::high_resolution_clock::now();
+    duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
+    cout << "Time: " << duration.count() << " nanoseconds\n";
 
     free(txt); //Free memory used for char array for the text
 }
