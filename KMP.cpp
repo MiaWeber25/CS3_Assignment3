@@ -56,7 +56,7 @@ void prefix(char* pat, int m, double* lps) {
 	int length = 0; // length of previous longest prefix suffix
 
 	lps[0] = 0; // lps[0] is always 0
-
+//new comment
 	//populates lps for i=1 to m-1
 	int i = 1;
 	
