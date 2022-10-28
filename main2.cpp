@@ -14,6 +14,7 @@
 #include "Karp-Rabin.cpp"
 
 using namespace std;
+using namespace chrono;
 
 // function prototypes:
 void search();
@@ -77,40 +78,40 @@ void search() { // logic to call searching algorithms
     
 
     // Start the clock:
-    auto start = chrono::high_resolution_clock::now();
+    auto start = high_resolution_clock::now();
     myFile.seekg(0,ios::beg);
 	myFile.read(txt, fileSize); // Read the file
     //Stop the clock:
-    auto stop = chrono::high_resolution_clock::now();
-    auto duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
-    cout << "Text read! Time to read: " << duration.count() << " nanoseconds\n" << endl;
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(stop-start);
+    cout << "Text read! Time to read: " << duration.count() << " milliseconds\n" << endl;
     myFile.close(); // Close the file
 
     // Call search functions:
     cout << "KMP:\n";
-    start = chrono::high_resolution_clock::now();
-    KMP(pat, txt);
-    stop = chrono::high_resolution_clock::now();
-    duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
-    cout << "Time: " << duration.count() << " nanoseconds\n";
+    start = high_resolution_clock::now();
+    //KMP(pat, txt);
+    stop = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(stop-start);
+    cout << "Time: " << duration.count() << " milliseconds\n";
 
     cout << "\nHorspool:\n";
-    start = chrono::high_resolution_clock::now();
+    start = high_resolution_clock::now();
     HorspoolMatching(pat, txt); //Horspool
-    stop = chrono::high_resolution_clock::now();
-    duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
-    cout << "Time: " << duration.count() << " nanoseconds\n";
+    stop = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(stop-start);
+    cout << "Time: " << duration.count() << " milliseconds\n";
     
     //Karp Rabin
     cout << "\nKarp-Rabin:\n";
-    start = chrono::high_resolution_clock::now();
+    start = high_resolution_clock::now();
     //calculate q (large prime number)
     int q = INT_MAX;
     //search(pat, txt, q);
     KRMatching(pat, txt, q);
-    stop = chrono::high_resolution_clock::now();
-    duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
-    cout << "Time: " << duration.count() << " nanoseconds" << endl;
+    stop = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(stop-start);
+    cout << "Time: " << duration.count() << " milliseconds" << endl;
 
 
     free(txt); //Free memory used for char array for the text
