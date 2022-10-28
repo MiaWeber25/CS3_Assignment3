@@ -66,20 +66,3 @@ void KRMatching(char pat[], char txt[], int q) {
     cout << "Number of Occurances: " << counter << endl;
 }
 
-/* Driver code 
-int main()
-{
-    char txt[] = "GEEKS FOR GEEKS";
-    char pat[] = "GEEK";
-
-    // we mod to avoid overflowing of value but we should
-    // take as big q as possible to avoid the collison
-    int q = INT_MAX;
-
-    // Function Call
-    search(pat, txt, q);
-    return 0;
-}
-
-// This is code is contributed by rathbhupendra
-*/

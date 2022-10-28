@@ -23,7 +23,6 @@ void KMP(char* pat, char* txt) {
 	double lps[m];
 
 	prefix(pat, m, lps); // call prefix function to compute LPS array
-
 	int i = 0; // txt index
 	int j = 0; // pat index
 
@@ -31,7 +30,7 @@ void KMP(char* pat, char* txt) {
 		if (pat[j] == txt[i]) { 
 			j++;
 			i++;
-			compare++; //increment comparison counter
+			//compare++; //increment comparison counter
 		}
 
 		if (j==m) { // pattern found at [i-j]
@@ -45,7 +44,7 @@ void KMP(char* pat, char* txt) {
 			if (j != 0) {
 				j = lps[j - 1];
 			} else
-				i = i + 1;
+				i++;
 		}
 	}
 	cout << "Number of Occurances in the text: " << counter << endl;
@@ -61,26 +60,16 @@ void prefix(char* pat, int m, double* lps) {
 	//populates lps for i=1 to m-1
 	int i = 1;
 	
-	while (i<m) {
-		if (pat[i] == pat[length]) {
-			length++;
-			lps[i] = length;
-			i++;
-		}
-		else // (pat[i] != pat[length])
-		{
-			// This is tricky. Consider the example.
-			// AAACAAAA and i = 7. The idea is similar
-			// to search step.
-			//if (len != 0) {
-			if(length != 0) {
-				//len = lps[len - 1];
-				length = lps[length-1];
+	cout << "above logic" << endl;
+	for (i=1; i<m; i++) {
+	cout << "in for loop. i = " << i << endl;
+		do {
+			length=lps[length];
+			if (pat[length+1] == pat[i+1]) {
+				length++; 
 			}
-			else {// (len == 0)
-				lps[i] = 0;
-				i++;
-			}
-		}
+			lps[i+1] = length;
+		} while (length>0 && pat[length+1]!=pat[i+1]);
+
 	}
 }
