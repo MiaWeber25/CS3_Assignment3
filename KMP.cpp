@@ -26,23 +26,25 @@ void KMP(char* pat, char* txt) {
 	cout << "AFTER PREFIX LOGIC" << endl;
 	//cout << "LPS: " << *lps << endl;
 	int q = 0; //number of characters matched
-	/*for (int i=1; i<n; i++) {
+	for (int i=0; i<n; i++) {
 		cout << "loop #" << i << endl;
 		do {
-			q = lps[q];
-			if (pat[q]==txt[i]) {
-				q++;
+			q = lps[q-1]; //q=0 =0 
+			if (pat[q+1]==txt[i]) {
+				q++; //q=1
 				cout << "inside if #1" << endl;
+				cout << "q = " << q << endl;
 			} 
 			cout << "GOT HERE #1" << endl;
 			if (q == m) {
+				cout << "FOUND A MATCH!" << endl;
 				compare++;
 				counter++; //found the pattern at shift i-m
-				q = lps[q];
+				q = lps[q-1];
 				cout << "inside of if #2" << endl;
 			}
-		} while (q > 0 && pat[q] != txt[i]);
-	}*/
+		} while (q > 0 && pat[q+1] != txt[i]);
+	}
 
 	/*int i = 0; // txt index
 	int j = 0; // pat index
