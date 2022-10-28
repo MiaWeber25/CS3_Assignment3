@@ -38,7 +38,7 @@ void HorspoolMatching(char *P, char *T)
 {
     int m = strlen(P);
     int n = strlen(T);
-    cout << "The size of the text is: " << n << endl;
+    //cout << "The size of the text is: " << n << endl;
     int table[numOfChars];
     int cnt = 0;
     int cmp = 0;
@@ -66,5 +66,5 @@ void HorspoolMatching(char *P, char *T)
             shift += max(1, j - table[T[shift+j]]);
     }
 
-    cout << "Number of Occurances in the text: " << cnt << endl << "Number of comparisons made: " << cmp << endl;
+    cout << "Number of Occurances in the text: " << cnt << "\nNumber of comparisons made: " << cmp << endl;
 }
