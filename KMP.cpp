@@ -23,8 +23,9 @@ void KMP(char* pat, char* txt) {
 	double lps[m];
 
 	prefix(pat, m, lps); // call prefix function to compute LPS array
-	cout << "AFTER PREFIX LOGIC" << endl;
-	//cout << "LPS: " << *lps << endl;
+
+	//cout << "AFTER PREFIX LOGIC" << endl;
+	/* KMP Psudocode from slides 
 	int q = 0; //number of characters matched
 	for (int i=0; i<n; i++) {
 		do {
@@ -39,51 +40,33 @@ void KMP(char* pat, char* txt) {
 				cout << "FOUND A MATCH" << endl;
 				q = lps[q];
 			}
-		} while (q > 0 && pat[q+1] != txt[i]);
-
-		
-		/*do {
-			q = lps[q]; //q=0 =0 
-			if (pat[q+1]==txt[i]) {
-				q++; //q=1
-				cout << "inside if #1" << endl;
-				cout << "q = " << q << endl;
-			} 
-			cout << "GOT HERE #1" << endl;
-			if (q == m) {
-				cout << "FOUND A MATCH!" << endl;
-				compare++; //is this wrong? If there are no occurances there should still be comparisons made right? 
-				counter++; //found the pattern at shift i-m
-				q = lps[q];
-				cout << "inside of if #2" << endl;
-			}
 		} while (q > 0 && pat[q+1] != txt[i]);*/
+
+
+
+	int i = 0; // iterator for txt
+	int j = 0; // iterator for pat
+	while (i<n) {
+		if (pat[j] == txt[i]) {
+			if (j==m-1) {
+				//return (1-m+1);
+				cout << "FOUND A MATCH" << endl;
+				counter++;
+				compare++;
+			}
+			i++;
+			j++;
+		} else {
+			j = lps[j]; 
+		}
+
+		if (j==0) {
+			if (lps[i] != pat[0]) {
+				i++;
+			}
+		}
 	}
 
-	/*int i = 0; // txt index
-	int j = 0; // pat index
-
-	while ((n-i) >= (m-j)) { // length of txt > length of pat
-		if (pat[j] == txt[i]) { 
-			j++;
-			i++;
-			//compare++; //increment comparison counter
-		}
-
-		if (j==m) { // pattern found at [i-j]
-			counter++; //increment occurance counter
-			j = lps[j - 1];
-			compare++; //increment comparison counter
-		}
-
-		else if (i<n && pat[j] != txt[i]) { //found a mismatch
-			//don't need to match [0-lps[j-1]] -> they will match
-			if (j != 0) {
-				j = lps[j - 1];
-			} else
-				i++;
-		}
-	}*/
 	cout << "Number of Occurances in the text: " << counter << endl;
 	cout << "Number of comparisons made: " << compare << endl;
 }
