@@ -101,6 +101,8 @@ void search() { // logic to call searching algorithms
     duration = chrono::duration_cast<chrono::nanoseconds>(stop-start);
     cout << "Time: " << duration.count() << " nanoseconds\n";
     
+    cout << "\nKarp-Rabin:\n";
+    start = chrono::high_resolution_clock::now();
     //Karp Rabin
     cout << "\nKarp-Rabin:\n";
     start = chrono::high_resolution_clock::now();
