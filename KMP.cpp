@@ -27,28 +27,25 @@ void KMP(char* pat, char* txt) {
 
 	int i = 0; // iterator for txt
 	int j = 0; // iterator for pat
-	while ((n-i) >= (m-j)) {
+	while (i<n) {
 		if (pat[j] == txt[i]) {
-			compare++;
 			j++;
 			i++;
-		} 
-		if (j == m) {
-			//return (1-m+1);
-			//cout << "FOUND A MATCH" << endl;
+			compare++;
+		}
+		if (j==m) {
 			counter++;
-			//compare++;
-			j = lps[j - 1];
-		} 
-		else if (i < n && pat[j] != txt[i]){
+			compare++;
+			j = lps[j-1];
+		}
+		else if (i<n && pat[j] != txt[i]) {
 			if (j != 0) {
-				j = lps[j - 1]; 
+				j = lps[j-1];
 			} else {
 				i++;
 			}
 		}
 	}
-
 	cout << "Number of Occurances in the text: " << counter << endl;
 	cout << "Number of comparisons made: " << compare << endl;
 }
