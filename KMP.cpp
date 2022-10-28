@@ -23,7 +23,28 @@ void KMP(char* pat, char* txt) {
 	double lps[m];
 
 	prefix(pat, m, lps); // call prefix function to compute LPS array
-	int i = 0; // txt index
+	cout << "AFTER PREFIX LOGIC" << endl;
+	//cout << "LPS: " << *lps << endl;
+	int q = 0; //number of characters matched
+	/*for (int i=1; i<n; i++) {
+		cout << "loop #" << i << endl;
+		do {
+			q = lps[q];
+			if (pat[q]==txt[i]) {
+				q++;
+				cout << "inside if #1" << endl;
+			} 
+			cout << "GOT HERE #1" << endl;
+			if (q == m) {
+				compare++;
+				counter++; //found the pattern at shift i-m
+				q = lps[q];
+				cout << "inside of if #2" << endl;
+			}
+		} while (q > 0 && pat[q] != txt[i]);
+	}*/
+
+	/*int i = 0; // txt index
 	int j = 0; // pat index
 
 	while ((n-i) >= (m-j)) { // length of txt > length of pat
@@ -46,7 +67,7 @@ void KMP(char* pat, char* txt) {
 			} else
 				i++;
 		}
-	}
+	}*/
 	cout << "Number of Occurances in the text: " << counter << endl;
 	cout << "Number of comparisons made: " << compare << endl;
 }
@@ -60,16 +81,16 @@ void prefix(char* pat, int m, double* lps) {
 	//populates lps for i=1 to m-1
 	int i = 1;
 	
-	cout << "above logic" << endl;
+	//cout << "above logic" << endl;
 	for (i=1; i<m; i++) {
-	cout << "in for loop. i = " << i << endl;
+	//cout << "in for loop. i = " << i << endl;
 		do {
 			length=lps[length];
 			if (pat[length+1] == pat[i+1]) {
 				length++; 
 			}
 			lps[i+1] = length;
-		} while (length>0 && pat[length+1]!=pat[i+1]);
+		} while (length > 0 && pat[length+1]!=pat[i+1]);
 
 	}
 }
