@@ -90,7 +90,7 @@ void search() { // logic to call searching algorithms
     // Call search functions:
     cout << "KMP:\n";
     start = high_resolution_clock::now();
-    //KMP(pat, txt);
+    KMP(pat, txt);
     stop = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(stop-start);
     cout << "Time: " << duration.count() << " milliseconds\n";

@@ -27,9 +27,23 @@ void KMP(char* pat, char* txt) {
 	//cout << "LPS: " << *lps << endl;
 	int q = 0; //number of characters matched
 	for (int i=0; i<n; i++) {
-		cout << "loop #" << i << endl;
 		do {
-			q = lps[q-1]; //q=0 =0 
+			cout << "loop #" << i << endl;
+			if (pat[q+1]== txt[i]) {
+				cout << "First If satisfied" << endl;
+				q++;
+			}
+			if (q==m) {
+				compare++;
+				counter++;
+				cout << "FOUND A MATCH" << endl;
+				q = lps[q];
+			}
+		} while (q > 0 && pat[q+1] != txt[i]);
+
+		
+		/*do {
+			q = lps[q]; //q=0 =0 
 			if (pat[q+1]==txt[i]) {
 				q++; //q=1
 				cout << "inside if #1" << endl;
@@ -38,12 +52,12 @@ void KMP(char* pat, char* txt) {
 			cout << "GOT HERE #1" << endl;
 			if (q == m) {
 				cout << "FOUND A MATCH!" << endl;
-				compare++;
+				compare++; //is this wrong? If there are no occurances there should still be comparisons made right? 
 				counter++; //found the pattern at shift i-m
-				q = lps[q-1];
+				q = lps[q];
 				cout << "inside of if #2" << endl;
 			}
-		} while (q > 0 && pat[q+1] != txt[i]);
+		} while (q > 0 && pat[q+1] != txt[i]);*/
 	}
 
 	/*int i = 0; // txt index
