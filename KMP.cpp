@@ -5,6 +5,7 @@
 */
     #include <iostream>
     #include <fstream>
+	#include <cstring>
 	
     using namespace std;
 
@@ -24,44 +25,25 @@ void KMP(char* pat, char* txt) {
 
 	prefix(pat, m, lps); // call prefix function to compute LPS array
 
-	//cout << "AFTER PREFIX LOGIC" << endl;
-	/* KMP Psudocode from slides 
-	int q = 0; //number of characters matched
-	for (int i=0; i<n; i++) {
-		do {
-			cout << "loop #" << i << endl;
-			if (pat[q+1]== txt[i]) {
-				cout << "First If satisfied" << endl;
-				q++;
-			}
-			if (q==m) {
-				compare++;
-				counter++;
-				cout << "FOUND A MATCH" << endl;
-				q = lps[q];
-			}
-		} while (q > 0 && pat[q+1] != txt[i]);*/
-
-
-
 	int i = 0; // iterator for txt
 	int j = 0; // iterator for pat
-	while (i<n) {
+	while ((n-i) >= (m-j)) {
 		if (pat[j] == txt[i]) {
-			if (j==m-1) {
-				//return (1-m+1);
-				cout << "FOUND A MATCH" << endl;
-				counter++;
-				compare++;
-			}
-			i++;
+			compare++;
 			j++;
-		} else {
-			j = lps[j]; 
-		}
-
-		if (j==0) {
-			if (lps[i] != pat[0]) {
+			i++;
+		} 
+		if (j == m) {
+			//return (1-m+1);
+			//cout << "FOUND A MATCH" << endl;
+			counter++;
+			//compare++;
+			j = lps[j - 1];
+		} 
+		else if (i < n && pat[j] != txt[i]){
+			if (j != 0) {
+				j = lps[j - 1]; 
+			} else {
 				i++;
 			}
 		}
@@ -90,6 +72,5 @@ void prefix(char* pat, int m, double* lps) {
 			}
 			lps[i+1] = length;
 		} while (length > 0 && pat[length+1]!=pat[i+1]);
-
 	}
 }

@@ -12,6 +12,7 @@
 #include "KMP.cpp"
 #include "Horspool.cpp"
 #include "Karp-Rabin.cpp"
+//#include "newKMP.cpp"
 
 using namespace std;
 using namespace chrono;
@@ -90,7 +91,8 @@ void search() { // logic to call searching algorithms
     // Call search functions:
     cout << "KMP:\n";
     start = high_resolution_clock::now();
-    KMP(pat, txt);
+   KMP(pat, txt);
+    //KMPSearch(pat,txt);
     stop = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(stop-start);
     cout << "Time: " << duration.count() << " milliseconds\n";
@@ -121,4 +123,10 @@ void quit() {
     cout << "Goodbye!" << endl;
     return;
 }
+
+
+//  ********IF TIME: 
+//  If I search for "Store" in text.txt sample file, it doesn't take long enough and prints "0 milliseconds"
+//  Might be useful to implemnt if logic to say if milliseconds == 0 -> record nanoseconds instead. Or alternatively, 
+// If file size is small (or maybe also if pattern is small) then it uses nanoseconds also...
 
