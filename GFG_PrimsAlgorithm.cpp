@@ -1,11 +1,11 @@
 // A C++ program for Prim's Minimum
 // Spanning Tree (MST) algorithm. The program is
 // for adjacency matrix representation of the graph
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 // Number of vertices in the graph
-#define V 5
+#define V 8
 
 // A utility function to find the vertex with
 // minimum key value, from the set of vertices
@@ -95,11 +95,16 @@ int main()
 	| / \ |
 	(3)-------(4)
 			9	 */
-	int graph[V][V] = { { 0, 2, 0, 6, 0 },
-						{ 2, 0, 3, 8, 5 },
-						{ 0, 3, 0, 0, 7 },
-						{ 6, 8, 0, 0, 9 },
-						{ 0, 5, 7, 9, 0 } };
+
+
+	int graph[V][V] = { { 0, 1, 0, 0, 4, 0, 0, 0 }, //Using adjancency matrix???
+						{ 1, 0, 2, 0, 0, 0, 0, 0 },
+						{ 0, 2, 0, 0, 0, 0, 2, 0 },
+						{ 0, 0, 0, 0, 0, 0, 1, 0 },
+						{ 4, 0, 0, 0, 0, 0, 0, 0 },
+                        { 0, 0, 0, 0, 0, 0, 1, 0 },
+                        { 0, 0, 2, 1, 0, 1, 0, 1 },
+                        { 0, 0, 0, 0, 0, 0, 1, 0 } };
 
 	// Print the solution
 	primMST(graph);
