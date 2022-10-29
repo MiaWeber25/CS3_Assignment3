@@ -116,7 +116,7 @@ void search() { // logic to call searching algorithms
     duration = duration_cast<milliseconds>(stop-start);
     cout << "Time: " << duration.count() << " milliseconds" << endl;
 
-
+    
     free(txt); //Free memory used for char array for the text
 }
 
