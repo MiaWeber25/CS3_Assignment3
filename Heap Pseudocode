@@ -1,0 +1,91 @@
+Algorithm: siftup
+Purpose: re-establishes heap by moving new data item in child up to its correct location in the heap array
+Input: heap and newNode
+Pre: head is an array containing an invalid heap; newNode is index location to the new data item in the heap
+Post: heap has been reordered
+BEGIN siftup
+	IF (newNode not zero) THEN
+		parent = (newNode-1)/2
+		IF (heap[newNode].key > heap[parent].key) THEN
+			swap(heap, newNode, parent)
+			siftup(heap, parent)
+		ENDIF
+	ENDIF
+END siftup
+
+Algorithm: siftdown
+Purpose: re-establishes heap by moving new data item in root down to its correct location in the heap array
+Input: heap, root and last
+Pre: head is an array containing an invalid heap; root is root of the heap or sub-tree; last in an index to the last element in the heap
+Post: heap has been reordered
+BEGIN siftdown
+	leftchildindex = root*2+1
+	rightchildindex = root*2+2
+	IF (leftchildindex <= last) THEN
+		leftkey = heap[leftchildindex].key
+		IF (rightchildindex <= last) THEN
+			rightkey = heap[rightchildindex].key
+		ELSE
+			rightkey = leftkey-1
+		ENDIF
+		IF (leftkey > rightkey) THEN
+			largerchildkey = leftkey
+			largerchildindex = leftchildindex
+		ELSE
+			largerchildkey = rightkey
+			largerchildindex = rightchildindex
+		ENDIF
+		IF (heap[root].key < largerchildkey) THEN
+			swap (heap, root, largerchildindex)
+			siftdown (heap, largerchildindex, last)
+		ENDIF
+	ENDIF
+END siftdown
+
+Algorithm: BuildHeap
+Purpose: Re-arrange an array of elements so that they form a heap
+Input: heap and size
+Pre: Head is an array containing data in non-heap order; size is the number of elements in the array
+Post: the array becomes a heap
+BEGIN BuildHeap
+	wall_index = 1
+	WHILE (wall_index < size)
+		siftup (heap, wall_index)
+		wall_index = wall_index + 1
+	ENDWHILE
+END BuildHeap
+
+Algorithm: InsertHeap
+Purpose: Insert data into a heap
+Input: heap, last, and data
+Pre: head is a valid heap; last is index to the last node in the heap
+Post: data is inserted into the heap and last is updated
+Return: true if successful, false if array is full
+BEGIN InsertHeap
+	IF (heap is full) THEN
+		RETURN false
+	ELSE
+		last = last + 1
+		heap[last] = data
+		siftup(heap, last)
+		RETURN true
+	ENDIF
+END InsertHeap
+
+Algorithm: DeleteHeap
+Purpose: Delete root of a heap
+Input: heap, last, dataout
+Pre: head is a valid heap; last is index to the last node in the heap; dataout is a reference for output data
+Post: root is deleted from the heap and placed in dataout
+Return: true if successful, false if array is empty
+BEGIN DeleteHeap
+	IF (heap is empty) THEN
+		RETURN false
+	ELSE
+		dataout = heap[0]
+		heap[0] = heap[last]
+		last = last - 1
+		siftdown (heap, 0, last)
+		RETURN true
+	ENDIF
+END DeleteHeap
