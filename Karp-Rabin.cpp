@@ -41,11 +41,12 @@ void KRMatching(char pat[], char txt[], int q) { //k is last element of alpha -1
             }
             if (j==M) {
                 //FOUND PATTERN!
+                cout << "FOUND A MATCH!" << endl;
                 counter++;
             }
         }
         if (i<N-M) {
-            t = (D*t-txt[i]*c + txt[i+M]) %q;
+            t = (D*(t-txt[i]*c) + txt[i+M]) % q;
             if (t<0) {
                 t = (t+q);
             }

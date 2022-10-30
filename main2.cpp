@@ -108,8 +108,9 @@ void search() { // logic to call searching algorithms
     cout << "\nKarp-Rabin:\n";
     start = high_resolution_clock::now();
     //calculate q (large prime number)
-    //int q = INT_MAX;
-    int q = 7;
+    int q = INT_MAX;
+    //int q = 7;
+    //int q = 1303;
     //search(pat, txt, q);
     KRMatching(pat, txt, q);
     stop = high_resolution_clock::now();
