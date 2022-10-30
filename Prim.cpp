@@ -1,8 +1,9 @@
 #include <iostream>
-
+#include <chrono>
 using namespace std;
-    
-    const int numNodes = 10;  
+using namespace chrono;
+
+const int numNodes = 10;  
 
 
 // Finds the next node with minimum weight that ISN'T set
@@ -55,15 +56,19 @@ void prim(int adjMatrix[numNodes][numNodes]) {
 int main() {
     //int adjMatrix[numNodes][numNodes];
     int adjMatrix[numNodes][numNodes] = { { 0, 6, 10, 0, 0, 0, 0, 0, 0, 0 }, //Using adjancency matrix
-						{ 6, 0, 12, 11, 14, 0, 0, 0, 0, 0 },
-						{ 10, 12, 0, 12, 0, 0, 8, 16, 0, 0 },
-						{ 11, 11, 12, 0, 0, 6, 3, 0, 0, 0 },
-						{ 14, 14, 0, 0, 0, 4, 0, 0, 6, 0 },
-                        { 0, 0, 0, 6, 4, 0, 0, 0, 12, 0 },
-                        { 0, 0, 8, 3, 0, 0, 0, 0, 16, 6 },
-                        { 0, 0, 16, 0, 0, 0, 0, 0, 0, 8 },
-                        { 0, 0, 0, 0, 6, 12, 16, 0, 0, 13 },
-                        { 0, 0, 0, 0, 0, 0, 6, 8, 13, 0 } };
+                                          { 6, 0, 12, 11, 14, 0, 0, 0, 0, 0 },
+                                          { 10, 12, 0, 12, 0, 0, 8, 16, 0, 0 },
+                                          { 11, 11, 12, 0, 0, 6, 3, 0, 0, 0 },
+                                          { 14, 14, 0, 0, 0, 4, 0, 0, 6, 0 },
+                                          { 0, 0, 0, 6, 4, 0, 0, 0, 12, 0 },
+                                          { 0, 0, 8, 3, 0, 0, 0, 0, 16, 6 },
+                                          { 0, 0, 16, 0, 0, 0, 0, 0, 0, 8 },
+                                          { 0, 0, 0, 0, 6, 12, 16, 0, 0, 13 },
+                                          { 0, 0, 0, 0, 0, 0, 6, 8, 13, 0 } };
+    auto start = high_resolution_clock::now();
     prim(adjMatrix);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(stop-start);
+    cout << "Time: " << duration.count() << " nanoseconds\nNumber of comparisons: \n";
     return 0;
 }
