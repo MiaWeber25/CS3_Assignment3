@@ -28,14 +28,15 @@ void KMP(char* pat, char* txt) {
 	int i = 0; // iterator for txt
 	int j = 0; // iterator for pat
 	while (i<n) {
+		compare++;
 		if (pat[j] == txt[i]) {
 			j++;
 			i++;
-			compare++;
+			//compare++;
 		}
 		if (j==m) {
 			counter++;
-			compare++;
+			//compare++;
 			j = lps[j-1];
 		}
 		else if (i<n && pat[j] != txt[i]) {
