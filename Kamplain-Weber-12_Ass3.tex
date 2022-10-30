@@ -1,6 +1,7 @@
 \documentclass{article}
-%\usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \graphicspath{ {./CS3_Assignment3/} }
 \begin{document}
 \title{Assignment 3}
@@ -77,10 +78,86 @@ Edge & Weight & Total Cost \\ [0.5ex]
 \includegraphics[width=\textwidth]{colorizedMST.jpeg}
 \end{center}
 
+\section{Question 3}
+
+Please go to the next page to see the Pseudocode for Question 3.
+
+\begin{algorithm}
+\caption{deleteNode}\label{alg:cap}
+\begin{algorithmic}
+\If{$(heap \ is \ empty)$}
+\State \Return false
+\Else
+\State $size \gets sizeof(arr) / sizeof(arr[0])$
+\State $N \gets size(heap)$
+\State $minElement \gets heap[\frac{N}{2}]$
+\For{$i \gets \frac{n}{2+1} until \ n$}
+\State $minElement \gets min(minElement, heap[i])$
+\EndFor
+\For{$i \gets 1 \ until \ n$}
+\If{$(heap[i]=minElement)$}
+\State $M \gets i$
+\State $heap[i] \gets heap[M]$
+\EndIf
+\EndFor
+\For{$i \gets m \ unitl \ \frac{2}{n}$}
+\If{$(heap[2 \times i] > heap[(2 \times i) + 1] \ and \  heap[2 \times i] > heap[i])$}
+\State $swap(heap[i], heap[2 \times i])$
+\State $i \gets (2 \times i)+1$
+\ElsIf{$(heap[2 \times i] < heap[(2 \times i)+1] \ and \  heap[(2 \times i)+1] > heap[i]$)}
+\State $swap(heap[i], heap[(2 \times i)+1]$)
+\State $i \gets (2 \times i)+1$
+\Else
+\State break
+\EndIf
+\EndFor
+\State $n \gets n-1$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{correctHeap}\label{alg:cap}
+\begin{algorithmic}
+\State $index \gets 1$
+\While{$(index < size)$}
+\State $siftdown(heap, index)$
+\State $index++$
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{siftdown}\label{alg:cap}
+\begin{algorithmic}
+\State $leftchildindex \gets root \times 2+1$
+\State $rightchildindex \gets root \times 2+2$
+\If{$(leftchildindex <= last)$}
+\State $leftkey \gets heap[leftchildindex].key$
+\If{$(rightchildindex <= last)$}
+\State $rightkey \gets heap[rightchildindex].key$
+\Else
+\State $rightkey \gets leftkey-1$
+\EndIf
+\If{$(leftkey > rightkey)$}
+\State $largerchildkey \gets leftkey$
+\State $largerchildindex \gets leftchildindex$
+\Else
+\State $largerchildkey \gets rightkey$
+\State $largerchildindex \gets rightchildindex$
+\EndIf
+\If{$(heap[root].key < largerchildkey)$}
+\State $swap(heap, root, largerchildindex)$
+\State $siftdown(heap, largerchildindex, last)$
+\EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
 \paragraph{\linebreak I declare that all material in this assessment task is my work except where there is clear acknowledgment or reference to the work of others. I further declare that I have complied and agreed to the CMU Academic Integrity Policy at the University website.
 \linebreak  http://www.coloradomesa.edu/student-services/documents
-\linebreak \linebreak Author’s Name: Mia Weber UID: 700510845 Date: 10/6/2022
-\linebreak Author's Name: Brandon Kamplain UID: 700510289 Date: 10/6/2022}
+\linebreak \linebreak Author’s Name: Mia Weber UID: 700510845 Date: 10/30/2022
+\linebreak Author's Name: Brandon Kamplain UID: 700510289 Date: 10/30/2022}
 
 
 \end{document}
