@@ -16,32 +16,32 @@ void KRMatching(char pat[], char txt[], int q) { //k is last element of alpha -1
     int M = strlen(pat);
     int N = strlen(txt);
     int i, j;
-    //int p = 0; // hash value for pattern
-    //int t = 0; // hash value for txt
+
     int counter = 0;
+    int compare = 0;
 
 
     int c = 1;
-    int p = 0;
-    int t = 0;
-    for (int i=0; i<M-1; i++) {
+    int p = 0; // hash value for the pattern
+    int t = 0; // hash value for the text
+    for (i=0; i<M-1; i++) {
         c = (c * D) % q; //pow(k,m-1)%q
 
     }
-    for (int i=0; i<M; i++) {
+    for (i=0; i<M; i++) {
         p = (D*p + pat[i]) % q;
         t = (D*t + txt[i]) % q;
     }
-    for (int i=0;i<=N-M;i++) {
+    for (i=0;i<=N-M;i++) {
         if (p==t) {
-            for (int j=0;j<M;j++) {
+            compare++;
+            for (j=0;j<M;j++) {
                 if (txt[i+j] != pat[j]) {
                     break;
                 }
             }
             if (j==M) {
                 //FOUND PATTERN!
-                cout << "FOUND A MATCH!" << endl;
                 counter++;
             }
         }
@@ -53,5 +53,6 @@ void KRMatching(char pat[], char txt[], int q) { //k is last element of alpha -1
         }
     }
     cout << "Number of Occurances: " << counter << endl;
+    cout << "Numer of Comparisons made: " << compare << endl;
 }
 
