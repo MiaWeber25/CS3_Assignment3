@@ -82,12 +82,11 @@ void search() { // Logic to call searching algorithms
 	myFile.read(txt, fileSize); // Read the file
     //Stop the clock:
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(stop-start);
-    cout << "Text read! Time to read: " << duration.count() << " milliseconds\n" << endl;
-    if (duration == 0) { // Milliseconds is too large -> need to output nanoseconds
-        duration = duration_cast<nanoseconds>(stop-start);
-        cout << "Text Read! Time to read: " << duration.count() << " nanoseconds\n" << endl;
-    }
+    //auto duration = duration_cast<milliseconds>(stop-start);
+    auto duration_ns = duration_cast<nanoseconds>(stop - start);
+    auto duration_mis = duration_cast<milliseconds>(stop - start);
+    cout << endl << "Total time elapsed: \n";
+    cout << "Text read! Time to read: " << duration_ns.count() << " nanoseconds\n" << endl;
     myFile.close(); // Close the file
 
     // Call search functions:
@@ -97,16 +96,19 @@ void search() { // Logic to call searching algorithms
     start = high_resolution_clock::now();
     KMP(pat, txt);
     stop = high_resolution_clock::now();
-    duration = duration_cast<milliseconds>(stop-start);
-    cout << "Time: " << duration.count() << " milliseconds\n";
+    duration_ns = duration_cast<nanoseconds>(stop - start);
+    duration_mis = duration_cast<milliseconds>(stop - start);
+    cout << "Time: " << duration_mis.count() << " milliseconds\nTime: " << duration_ns.count() << " nanoseconds\n";
 
     //Horspool search algorithm function call:
     cout << "\nHorspool:\n";
+    HorspoolMatching(pat, txt);
     start = high_resolution_clock::now();
     HorspoolMatching(pat, txt); 
     stop = high_resolution_clock::now();
-    duration = duration_cast<milliseconds>(stop-start);
-    cout << "Time: " << duration.count() << " milliseconds\n";
+    duration_ns = duration_cast<nanoseconds>(stop - start);
+    duration_mis = duration_cast<milliseconds>(stop - start);
+    cout << "Time: " << duration_mis.count() << " milliseconds\nTime: " << duration_ns.count() << " nanoseconds\n";
     
     //Karp Rabin search algorithm function call:
     cout << "\nKarp-Rabin:\n";
@@ -114,8 +116,9 @@ void search() { // Logic to call searching algorithms
     int q = INT_MAX; // Used for calculation of hashes
     KRMatching(pat, txt, q);
     stop = high_resolution_clock::now();
-    duration = duration_cast<milliseconds>(stop-start);
-    cout << "Time: " << duration.count() << " milliseconds" << endl;
+    duration_ns = duration_cast<nanoseconds>(stop - start);
+    duration_mis = duration_cast<milliseconds>(stop - start);
+    cout << "Time: " << duration_mis.count() << " milliseconds\nTime: " << duration_ns.count() << " nanoseconds\n";
 
     
     free(txt); // Free memory used for char array for the text
