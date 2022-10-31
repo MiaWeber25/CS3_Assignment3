@@ -4,6 +4,7 @@ using namespace std;
 using namespace chrono;
 
 const int numNodes = 10;  
+int counter = 0;
 
 
 // Finds the next node with minimum weight that ISN'T set
@@ -38,7 +39,6 @@ void prim(int adjMatrix[numNodes][numNodes]) {
     }
     weight[0] = 0;
     MST[0] = -1; 
-    int counter = 0;
 
     for (int count = 0; count < numNodes - 1; count++) {
         int minNode = findMinNode(weight, set);
@@ -72,6 +72,6 @@ int main() {
     prim(adjMatrix);
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(stop-start);
-    cout << "Time: " << duration.count() << " nanoseconds\nNumber of comparisons: \n";
+    cout << "Time: " << duration.count() << " nanoseconds\nNumber of comparisons: " << counter << endl;
     return 0;
 }
