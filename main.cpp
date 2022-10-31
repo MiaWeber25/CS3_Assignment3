@@ -102,7 +102,6 @@ void search() { // Logic to call searching algorithms
 
     //Horspool search algorithm function call:
     cout << "\nHorspool:\n";
-    HorspoolMatching(pat, txt);
     start = high_resolution_clock::now();
     HorspoolMatching(pat, txt); 
     stop = high_resolution_clock::now();
