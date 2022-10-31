@@ -38,11 +38,14 @@ void prim(int adjMatrix[numNodes][numNodes]) {
     }
     weight[0] = 0;
     MST[0] = -1; 
+    int counter = 0;
 
     for (int count = 0; count < numNodes - 1; count++) {
         int minNode = findMinNode(weight, set);
         set[minNode] = true;
         for (int i=0;i<numNodes;i++) {
+            //here is where the comparison counter should go... 
+            counter++;
             if (adjMatrix[minNode][i] && !set[i] && adjMatrix[minNode][i] < weight[i]) {
                 MST[i] = minNode;
                 weight[i] = adjMatrix[minNode][i];

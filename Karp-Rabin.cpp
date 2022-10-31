@@ -8,58 +8,53 @@
 
 using namespace std;
 
-const int D = 256; // number of chars in alphabet (ASCII = 256)
+const int D = 256; // Number of chars in alphabet (ASCII = 256)
 
-
-//void search(char pat[], char txt[], int q) //q is a prime number
-void KRMatching(char pat[], char txt[], int q) { //k is last element of alpha -1 (255)
+// Karp-Rabin matching algorithm
+// Input: the pattern, the text, q (INT_MAX) to calculate hash values
+void KRMatching(char pat[], char txt[], int q) { 
     int M = strlen(pat);
     int N = strlen(txt);
-    int i, j;
+    int i, j; // Iterators for for loops
 
-    int counter = 0;
-    int compare = 0;
-    int spurious = 0;
+    int counter = 0; // Count number of occurances in the text
+    int compare = 0; // Count number of comparisons made
+    int spurious = 0; // Count number of spurious hits (hashes match but txt and pat don't)
 
 
-    int c = 1;
-    int p = 0; // hash value for the pattern
-    int t = 0; // hash value for the text
+    int c = 1; 
+    int p = 0; // Hash value for the pattern
+    int t = 0; // Hash value for the text
     bool mismatch = false;
 
     for (i=0; i<M-1; i++) {
-        c = (c * D) % q; //pow(k,m-1)%q
+        c = (c * D) % q; // pow(k,m-1)%q
     }
 
-    for (i=0; i<M; i++) {
+    for (i=0; i<M; i++) { // Calculate the inital hashes for the text and the pattern
         p = (D*p + pat[i]) % q;
         t = (D*t + txt[i]) % q;
     }
+
     for (i=0;i<=N-M;i++) {
-        compare++;
+        compare++; // Increment comparison counter
+        
         if (i>0) {
-            t = (D*(t-txt[i-1]*c) + txt[(i-1)+M]) % q;
+            t = (D*(t-txt[i-1]*c) + txt[(i-1)+M]) % q; // Calculate hash for new substring of txt
         }
-        if (p==t) {
-            //spurious++;
+
+        if (p==t) { // If the hashes match:
             mismatch = false;
             for (j=0;j<M && !mismatch;j++) {
                 if (txt[i+j] != pat[j]) {
-                    //break; //find match even if last chars don't - bug
-                    //bool found
                     mismatch = true;
-                    spurious++; 
+                    spurious++; // Found a spurious match
                 }
             }
-           // if (j==M) {
             if (!mismatch) {
-                //FOUND PATTERN!
-                counter++;
+                counter++; // Found a match -> increment the counter
             }
         }
-       // if (i<N-M) {
-        //    t = (D*(t-txt[i]*c) + txt[i+M]) % q;
-       // }
     }
     cout << "Number of Occurances: " << counter << endl;
     cout << "Numer of Comparisons made: " << compare << endl;
