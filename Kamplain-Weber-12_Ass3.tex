@@ -84,7 +84,7 @@ Please go to the next page to see the Pseudocode for Question 3.
 
 When a node is deleted from a heap, the other nodes must be rearranged in order to continue to meet the requirements of a heap (the data value at the root of a heap is larger than all of its children). Therefore, an algorithm that finds and deletes the element of the smallest value in a heap also needs to rearrange the surrounding nodes in order for the remaining data structure to continue to be classified as a heap. The siftdown algorithm accomplishes just this. The siftdown algorithm moves a new data item in a child branch down to the correct location in the heap in order to re-establish the heap. The algorithm must first identify the smallest element in the heap, remove that element from the heap, and then use the siftdown algorithm to re-establish the conditions of the heap. The time efficiency of the following algorithm is $O(n)$.
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{deleteNode}\label{alg:cap}
 \begin{algorithmic}
 \If{$(heap \ is \ empty)$}
@@ -118,7 +118,7 @@ When a node is deleted from a heap, the other nodes must be rearranged in order 
 \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{correctHeap}\label{alg:cap}
 \begin{algorithmic}
 \State $index \gets 1$
@@ -129,7 +129,7 @@ When a node is deleted from a heap, the other nodes must be rearranged in order 
 \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{siftdown}\label{alg:cap}
 \begin{algorithmic}
 \State $leftchildindex \gets root \times 2+1$

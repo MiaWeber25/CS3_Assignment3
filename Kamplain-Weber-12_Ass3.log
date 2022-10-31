@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.22)  30 OCT 2022 19:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.22)  30 OCT 2022 19:39
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **Kamplain-Weber-12_Ass3.tex
 (./Kamplain-Weber-12_Ass3.tex
@@ -154,7 +155,7 @@ File: colorizedMST.jpeg Graphic file (type jpg)
 Package pdftex.def Info: colorizedMST.jpeg  used on input line 78.
 (pdftex.def)             Requested size: 345.0pt x 258.62183pt.
 
-[2]
+[2] [3 <./colorizedMST.jpeg>] [4]
 Underfull \hbox (badness 10000) in paragraph at lines 165--165
 
  []
@@ -180,7 +181,7 @@ Overfull \hbox (7.70775pt too wide) in paragraph at lines 165--165
 2022[] 
  []
 
-[3 <./colorizedMST.jpeg>] [4] [5] (./Kamplain-Weber-12_Ass3.aux)
+[5] (./Kamplain-Weber-12_Ass3.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -192,7 +193,7 @@ Here is how much of TeX's memory you used:
  20219 multiletter control sequences out of 15000+600000
  473207 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,62p,895b,288s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 55i,7n,62p,895b,285s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -202,7 +203,7 @@ sr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
 ocal/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
 al/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/
 texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Kamplain-Weber-12_Ass3.pdf (5 pages, 676238 bytes).
+Output written on Kamplain-Weber-12_Ass3.pdf (5 pages, 676240 bytes).
 PDF statistics:
  68 PDF objects out of 1000 (max. 8388607)
  40 compressed objects within 1 object stream
