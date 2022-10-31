@@ -1,6 +1,6 @@
 /*
     Karp-Rabin Search Algorithm
-    CSCI 250 Mia Weber & Brandon Kamplain
+    CSCI 250 Mia Weber
     10/30/2022
 */
 #include <iostream>
@@ -41,6 +41,7 @@ void KRMatching(char pat[], char txt[], int q) {
         
         if (i>0) {
             t = (D*(t-txt[i-1]*c) + txt[(i-1)+M]) % q; // Calculate hash for new substring of txt
+            // Subtract one from index i because you calculate hash based on value before i is incremented
         }
 
         if (p==t) { // If the hashes match:
@@ -56,8 +57,8 @@ void KRMatching(char pat[], char txt[], int q) {
             }
         }
     }
-    cout << "Number of Occurances: " << counter << endl;
-    cout << "Numer of Comparisons made: " << compare << endl;
+    cout << "Number of occurances in the text is: " << counter << endl;
+    cout << "Numer of comparisons: " << compare << endl;
     cout << "Spurious Matches: " << spurious << endl;
 }
 
